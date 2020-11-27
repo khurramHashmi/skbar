@@ -194,7 +194,7 @@ def clustering_knn_acc(model, train_loader, eval_loader, criterion , num_epoches
 def training(epoch, train_loader, eval_loader, print_every,
              model, optimizer, criterion_seq, file_output,
              root_path, network, en_num_layers, hidden_size, 
-             load_saved=True, num_class=10, few_knn=False):
+             load_saved=False, num_class=10, few_knn=False):
 
     auto_criterion = nn.MSELoss()
     start = time.time()

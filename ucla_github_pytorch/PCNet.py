@@ -113,8 +113,7 @@ class seq2seq(nn.Module):
     def forward(self, input_tensor, seq_len):
         self.batch_size = len(seq_len)
         
-        encoder_hidden = self.encoder(
-            input_tensor, seq_len)
+        encoder_hidden = self.encoder(input_tensor, seq_len)
 
         decoder_output = torch.Tensor().to(self.device)
         
@@ -137,8 +136,7 @@ class seq2seq(nn.Module):
         else:
             hidden = encoder_hidden
             for it in range(max(seq_len)):
-                deout_tmp, hidden = self.decoder(
-                    de_input[:, it:it+1, :], hidden)
+                deout_tmp, hidden = self.decoder(de_input[:, it:it+1, :], hidden)
 
                 decoder_output = torch.cat((decoder_output, deout_tmp), dim=1)
         return encoder_hidden, decoder_output
